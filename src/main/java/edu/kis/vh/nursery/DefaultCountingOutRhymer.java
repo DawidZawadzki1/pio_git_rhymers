@@ -10,23 +10,26 @@ public class DefaultCountingOutRhymer {
     /**
      * Maksymalna liczba elementów, które rhymer może przechować.
      */
-    private static final int SIZE = 12;
+    private static final int CAPACITY = 12;
 
     /**
      * Tablica, która przechowuje liczby w rhymerze.
      */
-    private int[] numbers = new int[SIZE];
+    private int[] numbers = new int[CAPACITY];
 
     /**
      * Kod błędu zwracany przez metody, gdy operacja jest niewłaściwa.
      */
     private static final int ERR_CODE = -1;
-
+    /**
+     * Wartość oznaczająca pusty stos
+     */
+    private static final int EMPTY_STACK_CODE = -1;
     /**
      * Indeks reprezentujący aktualną pozycję w rhymerze.
-     * Inicjowany wartością ERR_CODE, aby wskazywać, że rhymer jest pusty.
+     * Inicjowany wartością EMPTY_STACK_CODE, aby wskazywać, że rhymer jest pusty.
      */
-    private int total = ERR_CODE;
+    private int total = EMPTY_STACK_CODE;
 
     /**
      * Zwraca wartość indeksu total, który reprezentuje aktualną pozycję w rhymerze.
@@ -51,12 +54,12 @@ public class DefaultCountingOutRhymer {
 
     /**
      * Sprawdza, czy rhymer jest pusty.
-     * Rhymer jest uznawany za pusty, jeśli total ma wartość ERR_CODE.
+     * Rhymer jest uznawany za pusty, jeśli total ma wartość EMPTY_STACK_CODE.
      *
      * @return true, jeśli rhymer jest pusty, w przeciwnym razie false.
      */
     public boolean callCheck() {
-        return total == ERR_CODE;
+        return total == EMPTY_STACK_CODE;
     }
 
     /**
@@ -66,7 +69,7 @@ public class DefaultCountingOutRhymer {
      * @return true, jeśli rhymer jest pełny, w przeciwnym razie false.
      */
     public boolean isFull() {
-        return total == SIZE - 1;
+        return total == CAPACITY - 1;
     }
 
     /**
